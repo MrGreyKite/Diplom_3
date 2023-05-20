@@ -7,7 +7,6 @@
     <groupId>ru.bagmet</groupId>
     <artifactId>Diplom_3</artifactId>
     <version>1.0-SNAPSHOT</version>
-    git add pom.xml
 
     <properties>
         <maven.compiler.source>11</maven.compiler.source>

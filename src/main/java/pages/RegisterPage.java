@@ -14,7 +14,6 @@ public class RegisterPage {
     SelenideElement emailField = $x("//label[text()='Email']/following-sibling::input");
     SelenideElement passwordField = $x("//label[text()='Пароль']/following-sibling::input");
     SelenideElement invalidPasswordMessage = $x("//*[@class='input__error text_type_main-default' and text()='Некорректный пароль']");
-
     SelenideElement toLoginLink = $x("//*[@class='Auth_link__1fOlj' and text()='Войти']");
     SelenideElement registerButton = $x("//button[text()='Зарегистрироваться']");
 

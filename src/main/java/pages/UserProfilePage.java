@@ -11,7 +11,6 @@ public class UserProfilePage {
     SelenideElement logoutLink = $(byTagAndText("button", "Выход"));
     SelenideElement profilePageInfo = $(byTagAndText("p",
             "В этом разделе вы можете изменить свои персональные данные"));
-
     SelenideElement logo = $(".AppHeader_header__logo__2D0X2");
     SelenideElement toConstructor = $x("//*[@class='AppHeader_header__linkText__3q_va ml-2' and text()='Конструктор']")
             .parent();

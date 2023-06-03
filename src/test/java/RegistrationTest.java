@@ -37,7 +37,6 @@ public class RegistrationTest extends BaseTest {
 
         webdriver().shouldHave(url(App.getLoginUrl()));
         loginPage.authorize(userInfo.get("email"), userInfo.get("password")).checkIfCreateOrderButtonIsPresent();
-
     }
 
     @ParameterizedTest(name = "Невалидный пароль - {0}")

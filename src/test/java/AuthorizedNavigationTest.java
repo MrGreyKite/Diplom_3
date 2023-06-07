@@ -26,7 +26,7 @@ public class AuthorizedNavigationTest extends BaseTest {
         userInfo = uc.constructUser();
         ApiHelpers.registerUser(userInfo);
 
-        open(App.getConstructorUrl());
+        open(App.CONSTRUCTOR_URL);
         localStorage().setItem("accessToken", ApiHelpers.getAuthToken());
         localStorage().setItem("refreshToken", ApiHelpers.getRefreshToken());
         refresh();
@@ -35,32 +35,32 @@ public class AuthorizedNavigationTest extends BaseTest {
     @Test
     @DisplayName("Переход на страницу конструктора из профиля - через логотип")
     public void goToConstructorPageFromProfileThroughLogoTest() {
-        open(App.getProfileUrl(), UserProfilePage.class).
+        open(App.PROFILE_URL, UserProfilePage.class).
                 clickOnLogo().
                 checkIfCreateOrderButtonIsPresent();
 
-        webdriver().shouldHave(url(App.getConstructorUrl()));
+        webdriver().shouldHave(url(App.CONSTRUCTOR_URL));
 
     }
 
     @Test
     @DisplayName("Переход на страницу конструктора из профиля - через кнопку-ссылку 'Конструктор'")
     public void goToConstructorPageFromProfileThroughConstructorLinkTest() {
-        open(App.getProfileUrl(), UserProfilePage.class).
+        open(App.PROFILE_URL, UserProfilePage.class).
                 clickOnConstructorLink().
                 checkIfCreateOrderButtonIsPresent();
 
-        webdriver().shouldHave(url(App.getConstructorUrl()));
+        webdriver().shouldHave(url(App.CONSTRUCTOR_URL));
     }
 
     @Test
     @DisplayName("Переход на страницу профиля из Конструктора")
     public void goToProfilePageFromConstructorTest() {
-        open(App.getConstructorUrl(), ConstructorPage.class).
+        open(App.CONSTRUCTOR_URL, ConstructorPage.class).
                 goToUserCabinetAuthorized().
                 checkProfilePageInfo();
 
-        webdriver().shouldHave(url(App.getProfileUrl() + "/profile"));
+        webdriver().shouldHave(url(App.PROFILE_URL + "/profile"));
     }
 
     @Test
@@ -68,10 +68,10 @@ public class AuthorizedNavigationTest extends BaseTest {
     @Description("Проверяется, что после выхода из аккаунта пользователя перебрасывает на страницу входа " +
             "и пропадает токен авторизации")
     public void logoutTest() {
-        open(App.getProfileUrl(), UserProfilePage.class).
+        open(App.PROFILE_URL, UserProfilePage.class).
                 logout();
 
-        webdriver().shouldHave(url(App.getLoginUrl()));
+        webdriver().shouldHave(url(App.LOGIN_URL));
         localStorage().shouldNotHave(item("accessToken"));
         localStorage().shouldNotHave(item("refreshToken"));
     }

@@ -1,5 +1,6 @@
 package helpers;
 
+import config.App;
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.ValidatableResponse;
@@ -35,7 +36,7 @@ public class ApiHelpers {
                 contentType(ContentType.JSON).
                 body(userInfo).
                 when().
-                post("https://stellarburgers.nomoreparties.site/api/auth/register").
+                post(App.BASE_URL + "/api/auth/register").
                 then();
 
         setAuthToken(resp.extract().path("accessToken"));
@@ -48,10 +49,11 @@ public class ApiHelpers {
                 contentType(ContentType.JSON).
                 header("authorization", authToken).
                 when().
-                delete("https://stellarburgers.nomoreparties.site/api/auth/user").
+                delete(App.BASE_URL + "/api/auth/user").
                 then();
 
         setAuthToken("");
+        setRefreshToken("");
     }
 
 

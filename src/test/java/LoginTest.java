@@ -29,22 +29,22 @@ public class LoginTest extends BaseTest {
 
         switch (loginMethod) {
             case "userCabinetButton":
-                open(App.getConstructorUrl(), ConstructorPage.class)
+                open(App.CONSTRUCTOR_URL, ConstructorPage.class)
                         .goToUserCabinetUnauthorized()
                         .authorize(userInfo.get("email"), userInfo.get("password"));
                 break;
             case "loginButton":
-                open(App.getConstructorUrl(), ConstructorPage.class)
+                open(App.CONSTRUCTOR_URL, ConstructorPage.class)
                         .pressLoginButton()
                         .authorize(userInfo.get("email"), userInfo.get("password"));
                 break;
             case "registerPage":
-                open(App.getRegistrationUrl(), RegisterPage.class)
+                open(App.REGISTRATION_URL, RegisterPage.class)
                         .toLogin()
                         .authorize(userInfo.get("email"), userInfo.get("password"));
                 break;
             case "restorationPage":
-                open(App.getRestorationUrl(), RestorePage.class)
+                open(App.RESTORATION_URL, RestorePage.class)
                         .toLogin()
                         .authorize(userInfo.get("email"), userInfo.get("password"));
                 break;

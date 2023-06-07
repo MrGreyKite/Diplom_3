@@ -16,13 +16,13 @@ public class ConstructorTabsTest extends BaseTest {
     @MethodSource("tabsToSelect")
     @DisplayName("Проверка переключения табов после открытия конструктора")
     public void selectNonDefaultTabsInConstructorTest(String tab) {
-       open(App.getConstructorUrl(), ConstructorPage.class).clickOnTab(tab).checkIfTabIsSelected(tab);
+       open(App.CONSTRUCTOR_URL, ConstructorPage.class).clickOnTab(tab).checkIfTabIsSelected(tab);
     }
 
     @Test
     @DisplayName("Проверка возвращения на таб, который был выбран по умолчанию")
     public void returnToDefaultTab() {
-        ConstructorPage cp = open(App.getConstructorUrl(), ConstructorPage.class).
+        ConstructorPage cp = open(App.CONSTRUCTOR_URL, ConstructorPage.class).
                 clickOnTab("Соусы").
                 clickOnTab("Булки");
         cp.checkIfTabIsUnselected("Соусы");

@@ -32,10 +32,10 @@ public class RegistrationTest extends BaseTest {
     @Description("Проверяется успешное совершение регистрации, перенаправление после регистрации " +
             "и возможность авторизоваться с этими данными: после авторизации меняется кнопка в Конструкторе")
     public void registrationWithValidPasswordTest() {
-        LoginPage loginPage = open(App.getRegistrationUrl(), RegisterPage.class).
+        LoginPage loginPage = open(App.REGISTRATION_URL, RegisterPage.class).
                 doRegister(userInfo.get("name"), userInfo.get("email"), userInfo.get("password"));
 
-        webdriver().shouldHave(url(App.getLoginUrl()));
+        webdriver().shouldHave(url(App.LOGIN_URL));
         loginPage.authorize(userInfo.get("email"), userInfo.get("password")).checkIfCreateOrderButtonIsPresent();
     }
 
@@ -44,7 +44,7 @@ public class RegistrationTest extends BaseTest {
     @DisplayName("Регистрация с неподходящим паролем")
     @Description("Проверяется регистрация с паролем меньше 6 символов - должна выводиться ошибка")
     public void registrationWithInvalidPasswordTest(String incorrectPass){
-        open(App.getRegistrationUrl(), RegisterPage.class).
+        open(App.REGISTRATION_URL, RegisterPage.class).
                 setEmailField(userInfo.get("email")).setNameField(userInfo.get("name")).setPasswordField(incorrectPass).
                 pressRegisterButton().
                 checkMessageAboutInvalidPassword();
